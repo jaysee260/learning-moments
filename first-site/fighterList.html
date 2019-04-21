@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>First Site</title>
+</head>
+<body>
+
+  <div>
+    <label>Fighter Name</label>
+    <input type="text" id="fighter-name" >
+    <input type="submit" value="Enter" onclick="addFighterToList()" >
+  </div>
+
+  <div>
+    <ul id="fighter-list">
+    </ul>
+  </div>
+
+  <script>
+
+    const MAX_NUMBER_OF_FIGHTERS_ALLOWED_PER_USER = 3;
+    var fighterAdditionCount = 0;
+
+    // Create reference to fighter name input element
+    var fighterNameInput = document.getElementById("fighter-name");
+    // Create reference to fighter list
+    var fighterList = document.getElementById("fighter-list");
+
+    function addFighterToList() {
+      if (fighterNameInput.value == "") return;
+
+      if (fighterAdditionCount < MAX_NUMBER_OF_FIGHTERS_ALLOWED_PER_USER) {
+        addFighter();
+        fighterAdditionCount++;
+      } else {
+        alert("You can only add 3 fighters to the list.");
+      }
+
+    }
+
+    function addFighter() {
+      // Create fighter list item
+      var fighterListElement = document.createElement("li");
+
+      // Populate list item with fighter name
+      fighterListElement.innerText = fighterNameInput.value;
+
+      // Append list item to fighter list
+      fighterList.appendChild(fighterListElement);
+
+      // Clear input
+      fighterNameInput.value = "";
+    }
+
+  </script>
+  
+</body>
+</html>
